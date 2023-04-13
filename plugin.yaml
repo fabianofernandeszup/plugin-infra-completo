@@ -4,7 +4,7 @@ metadata:
   name: plugin-infra-example
   display-name: plugin-infra-example
   description: Esse plugin utiliza o máximo de recursos possíveis de plugins para gerar um exemplo completo na publicação, exibição e utilização.
-  version: 1.0.1
+  version: 1.0.2
   picture: plugin.png
 spec:
   type: infra
@@ -19,10 +19,10 @@ spec:
     - Api
   requires:
     connection-interface:
-      - aws-rds-conn
+      - aws-vpc-conn
   generates:
     connection-interface:
-      - aws-vpc-conn
+      - aws-rds-conn
   inputs-envs:
     - label: Input Env text com required true sem valor default
       name: resourceenv1
@@ -125,7 +125,6 @@ spec:
       default: POST
       required: false
 
-    # Bug no CLI de lista só com 1 Item
     - label: Input text com 1 item e sem valor default e required true
       name: method7
       type: text
@@ -252,7 +251,6 @@ spec:
         - "*.com"
         - "*.com.br"
 
-    # Bug com lista com 1 item
     - label: (Input Select com 1 item) Selecione um dominio
       type: select
       name: domain2
