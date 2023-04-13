@@ -1,5 +1,9 @@
 ## StackSpot Plugin
 
+Input: "resourceenv1" - Value: "{{resourceenv1}}"
+Input: "resourceenv2" - Value: "{{resourceenv2}"
+Input: "resourceEnv3" - Value: "{{resourceenv3}}"
+Input: "resourceenv3" - Value: "{{resourceenv4}}"
 Input: "resource1" - Value: "{{resource1}}"
 Input: "resource2" - Value: "{{resource2}}"
 Input: "resource3" - Value: "{{resource3}}"

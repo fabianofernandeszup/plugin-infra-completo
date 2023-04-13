@@ -4,7 +4,7 @@ metadata:
   name: plugin-infra-example
   display-name: plugin-infra-example
   description: Esse plugin utiliza o máximo de recursos possíveis de plugins para gerar um exemplo completo na publicação, exibição e utilização.
-  version: 1.0.0
+  version: 1.0.1
   picture: plugin.png
 spec:
   type: infra
@@ -17,9 +17,33 @@ spec:
   repository: https://github.com/fabianofernandeszup/plugin-infra-example.git
   technologies: # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/yaml/#technologies
     - Api
+  requires:
+    connection-interface:
+      - aws-rds-conn
   generates:
     connection-interface:
       - aws-vpc-conn
+  inputs-envs:
+    - label: Input Env text com required true sem valor default
+      name: resourceenv1
+      type: text
+      required: true
+
+    - label: Input Env text com required false sem valor default
+      name: resourceenv2
+      type: text
+      required: false
+
+    - label: Input Env text com required true sem valor default
+      name: resourceEnv3
+      type: text
+      required: true
+
+    - label: Input Env text com required false sem valor default
+      name: resourceenv3
+      type: text
+      required: false
+
   inputs:
     - label: Input text com pattern regex, required true e Help
       name: resource1
@@ -102,21 +126,21 @@ spec:
       required: false
 
     # Bug no CLI de lista só com 1 Item
-    # - label: Input text com 1 item e sem valor default e required true
-    #   name: method7
-    #   type: text
-    #   items:
-    #     - GET
-    #   default: GET
-    #   required: true
+    - label: Input text com 1 item e sem valor default e required true
+      name: method7
+      type: text
+      items:
+        - GET
+      default: GET
+      required: true
 
-    # - label: Input text com 1 item e sem valor default e required false
-    #   name: method9
-    #   type: text
-    #   items:
-    #     - GET
-    #   default: GET
-    #   required: false
+    - label: Input text com 1 item e sem valor default e required false
+      name: method9
+      type: text
+      items:
+        - GET
+      default: GET
+      required: false
 
     - label: Input password required true
       name: password1
@@ -151,8 +175,8 @@ spec:
       type: text
       name: kotlin_version
       items:
-        - 1.6
-        - 1.7
+        - "1.6"
+        - "1.7"
       condition:
         variable: language
         operator: "=="
@@ -229,11 +253,11 @@ spec:
         - "*.com.br"
 
     # Bug com lista com 1 item
-    # - label: (Input Select com 1 item) Selecione um dominio
-    #   type: select
-    #   name: domain2
-    #   items:
-    #     - "*.com"
+    - label: (Input Select com 1 item) Selecione um dominio
+      type: select
+      name: domain2
+      items:
+        - "*.com"
 
   global-computed-inputs:
     name_formatted_global: "{{ resource1 | upper }}"
